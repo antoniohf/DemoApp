@@ -23,10 +23,10 @@ apply plugin: 'com.palantir.docker'
 apply plugin: 'kotlin'
 
 // This is used as the docker image prefix (org)
-group = 'antoniohf.test'
+group = 'antoniohf'
 
 bootJar {
-	archiveBaseName = 'demo-docker'
+	baseName = 'demo-docker'
 	archiveVersion =  '0.0.1'
 }
 
@@ -43,7 +43,7 @@ task unpack(type: Copy) {
 	into("build/dependency")
 }
 docker {
-	name "${project.group}/${bootJar.archiveBaseName}"
+	name "${project.group}/${bootJar.baseName}"
 	copySpec.from(tasks.unpack.outputs).into("dependency")
 	buildArgs(['DEPENDENCY': "dependency"])
 }
