@@ -1,4 +1,4 @@
-package antoniohf.test.demo
+package antoniohf.movierating
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

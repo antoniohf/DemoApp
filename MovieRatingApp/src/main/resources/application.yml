@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: DemoApp
+    name: MovieRatingApp
 
 ribbon:
   ServerListRefreshInterval: 1000
