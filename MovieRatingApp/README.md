@@ -1,1 +1,1 @@
-# DemoApp
+# MovieRatingApp
