@@ -15,3 +15,6 @@ endpoints:
     enabled: true
   shutdown:
     enabled: true
+
+jwt:
+  secret: "secret_key"
