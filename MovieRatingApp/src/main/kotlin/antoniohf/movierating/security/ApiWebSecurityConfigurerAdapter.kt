@@ -17,31 +17,23 @@ import kotlin.reflect.jvm.internal.impl.load.java.structure.JavaClass
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-open class ApiWebSecurityConfigurerAdapter(private val userDetailsService: CustomUserDetailsService,
-                                          private val jwtRequestFilter: JwtRequestFilter) : WebSecurityConfigurerAdapter() {
+class ApiWebSecurityConfigurerAdapter(private val userDetailsService: CustomUserDetailsService,
+                                      private val jwtRequestFilter: JwtRequestFilter) : WebSecurityConfigurerAdapter() {
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
         auth!!.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder())
     }
 
     override fun configure(http: HttpSecurity?) {
-        http!!.cors()
-                .and()
+        http!!//.cors()
+                //.and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/api/v1/authentication").permitAll()
-                .antMatchers("/api/v1/administration").hasAuthority("ADMIN")
+                .antMatchers("/api/v1/authenticate").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-//                .logout()
-//                .permitAll()
-//                .logoutRequestMatcher(AntPathRequestMatcher("/logout"))
-//                .logoutSuccessHandler(SimpleUrlLogoutSuccessHandler())
-//                .deleteCookies("JSESSIONID")
-//                .logoutSuccessUrl("/")
-//                .and()
                 .exceptionHandling()
                 .and()
                 .sessionManagement()

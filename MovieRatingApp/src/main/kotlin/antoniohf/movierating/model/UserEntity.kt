@@ -4,6 +4,7 @@ import java.io.Serializable
 import javax.persistence.*
 
 @Entity
+@Table(name="users")
 data class User(var loginName: String,
                 var password: String,
                 var email: String,

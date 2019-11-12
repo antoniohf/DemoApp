@@ -8,14 +8,22 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import io.jsonwebtoken.ExpiredJwtException
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
 @Component
 class JwtRequestFilter(private val userDetailsService: CustomUserDetailsService,
                        private val jwtTokenUtil: JwtTokenUtil): OncePerRequestFilter() {
 
+    companion object {
+        @Suppress("JAVA_CLASS_ON_COMPANION")
+        @JvmStatic
+        private val logger = LoggerFactory.getLogger(javaClass.enclosingClass)
+    }
+
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         val requestTokenHeader = request.getHeader("Authorization")
+        logger.debug("received request with authorization header: \"$requestTokenHeader\"")
         var username: String? = null
         var jwtToken: String? = null
         // JWT Token is in the form "Bearer token". Remove Bearer word and get only the Token

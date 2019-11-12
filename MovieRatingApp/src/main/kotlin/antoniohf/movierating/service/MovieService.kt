@@ -13,7 +13,7 @@ class MovieService (private val movieRepo: MovieRepository,
 
     fun getMovieByTitle(title: String): Set<MovieDto> = movieRepo.findByTitle(title).map {movieMapper.toMovieDto(it) }.toSet()
 
-    fun addMovie(movieDto: MovieDto): Long = movieRepo.save(movieMapper.fromMovieDto(movieDto)).id!!
+    fun addMovie(movieDto: MovieDto): Long = movieRepo.save(movieMapper.fromMovieDto(movieDto)).id!! //TODO: id should not come from the request!
 
 }
 

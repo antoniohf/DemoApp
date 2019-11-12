@@ -3,24 +3,24 @@ package antoniohf.movierating.controller
 import antoniohf.movierating.dto.MovieDto
 import antoniohf.movierating.dto.StatusInfo
 import antoniohf.movierating.service.MovieService
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
 
 @RestController
 @RequestMapping("/api/v1/movies")
-@CrossOrigin(origins = ["http://localhost:4200"])
+//@CrossOrigin(origins = ["http://localhost:4200"])
 class MovieRatingController(private val movieService: MovieService) {
 
     @GetMapping("/")
-    fun getMovieList(): Set<MovieDto> = movieService.getAllMovies()
+    fun getMovieList(): ResponseEntity<*> = ResponseEntity.ok<Any>(movieService.getAllMovies())
 
     @GetMapping("/{title}")
-    fun getMovieByTitle(@PathVariable title: String): Set<MovieDto> = movieService.getMovieByTitle(title)
+    fun getMovieByTitle(@PathVariable title: String): ResponseEntity<*> = ResponseEntity.ok<Any>(movieService.getMovieByTitle(title))
 
     @PostMapping("/")
-    fun addMovie(): Long = movieService.addMovie(MovieDto(title = "test", releaseDate = LocalDate.now()))
-//    fun addMovie(@RequestBody movieDto: MovieDto): Long = movieService.addMovie(movieDto)
+    fun addMovie(@RequestBody movieDto: MovieDto): ResponseEntity<*> = ResponseEntity.ok<Any>(movieService.addMovie(movieDto)) //TODO: this might need to change
 
     @GetMapping("/status")
-    fun getStatus(): StatusInfo = StatusInfo("Movie Rating App running on Docker", "alpha v0.0.1")
+    fun getStatus(): ResponseEntity<*> = ResponseEntity.ok<Any>(StatusInfo("Movie Rating App running on Docker", "alpha v0.0.1"))
 }

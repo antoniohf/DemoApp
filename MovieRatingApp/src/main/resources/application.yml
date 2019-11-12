@@ -18,3 +18,9 @@ endpoints:
 
 jwt:
   secret: "secret_key"
+
+logging:
+    level:
+      antoniohf.movierating: DEBUG
+
+
