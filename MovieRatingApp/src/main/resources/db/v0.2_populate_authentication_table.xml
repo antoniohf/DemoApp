@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="v0.2" author="antoniohf">
+        <comment>
+            Populate users
+        </comment>
+        <insert tableName="users">
+            <column name="id" valueComputed="seq_users_id.NEXTVAL" >
+            </column>
+            <column name="login_name" value="user">
+            </column>
+            <column name="password" value="$2a$10$livXCWdzjHEMqprs7l6KPeO/8x15xzdE622TPNvCD8j6ANZuFjfXK">
+            </column>
+            <column name="email" value="email">
+            </column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

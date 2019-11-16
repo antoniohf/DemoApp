@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: MovieRatingApp
+  liquibase:
+    changeLog: "classpath:/db/database-changelog.xml"
 
 ribbon:
   ServerListRefreshInterval: 1000

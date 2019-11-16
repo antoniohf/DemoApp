@@ -9,6 +9,8 @@ buildscript {
 		slf4jVersion = '1.7.29'
 		h2Version = '1.4.200'
 		kotlinxVersion = '1.3.2'
+		liquibasePluginVersion = '2.0.1'
+		liquibaseVersion = '3.8.1'
 	}
 	repositories {
 		maven {
@@ -22,6 +24,7 @@ buildscript {
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinPluginVersion}"
 		classpath "org.jetbrains.kotlin:kotlin-allopen:${kotlinPluginVersion}"
 		classpath "org.jetbrains.kotlin:kotlin-noarg:${kotlinPluginVersion}"
+		classpath "org.liquibase:liquibase-gradle-plugin:${liquibasePluginVersion}"
 	}
 
 }
@@ -35,6 +38,7 @@ apply plugin: 'com.palantir.docker'
 apply plugin: 'kotlin'
 apply plugin: "kotlin-spring"
 apply plugin: "kotlin-jpa"
+apply plugin: 'org.liquibase.gradle'
 
 // This is used as the docker image prefix (org)
 group = 'antoniohf'
@@ -80,4 +84,6 @@ dependencies {
 	runtimeOnly "com.h2database:h2:${h2Version}"
 	testCompile("org.springframework.boot:spring-boot-starter-test:${springbootVersion}")
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxVersion}"
+	implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
+	liquibaseRuntime 'org.liquibase:liquibase-core:3.6.1'
 }
