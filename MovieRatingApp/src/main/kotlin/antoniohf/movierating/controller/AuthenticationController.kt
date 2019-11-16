@@ -19,9 +19,7 @@ import java.io.Serializable
 //@CrossOrigin(origins = ["http://localhost:4200"])
 class AuthenticationController(private val authenticationManager: AuthenticationManager,
                                private val userDetailsService: CustomUserDetailsService,
-                               private val jwtTokenUtil: JwtTokenUtil,
-                               private val userRepo: UserRepository,
-                               private val userMapper: UserMapper) {
+                               private val jwtTokenUtil: JwtTokenUtil) {
 
     companion object {
         @Suppress("JAVA_CLASS_ON_COMPANION")
