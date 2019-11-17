@@ -3,12 +3,14 @@ package antoniohf.movierating.controller
 import antoniohf.movierating.dto.MovieDto
 import antoniohf.movierating.dto.StatusInfo
 import antoniohf.movierating.service.MovieService
+import io.swagger.annotations.Api
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
 
 @RestController
 @RequestMapping("/api/v1/movies")
+@Api(tags = ["Movie rating API"])
 //@CrossOrigin(origins = ["http://localhost:4200"])
 class MovieRatingController(private val movieService: MovieService) {
 
