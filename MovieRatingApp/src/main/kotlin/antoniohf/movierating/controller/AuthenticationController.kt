@@ -1,9 +1,8 @@
 package antoniohf.movierating.controller
 
-import antoniohf.movierating.mapper.UserMapper
-import antoniohf.movierating.repository.UserRepository
 import antoniohf.movierating.security.CustomUserDetailsService
 import antoniohf.movierating.security.JwtTokenUtil
+import io.swagger.annotations.Api
 import org.slf4j.LoggerFactory
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
@@ -16,6 +15,7 @@ import java.io.Serializable
 
 @RestController
 @RequestMapping("/api/v1")
+@Api(tags = ["Authentication API"])
 //@CrossOrigin(origins = ["http://localhost:4200"])
 class AuthenticationController(private val authenticationManager: AuthenticationManager,
                                private val userDetailsService: CustomUserDetailsService,

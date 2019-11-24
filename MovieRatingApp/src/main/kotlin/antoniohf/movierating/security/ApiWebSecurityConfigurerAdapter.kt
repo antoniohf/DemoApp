@@ -31,18 +31,12 @@ class ApiWebSecurityConfigurerAdapter(private val userDetailsService: CustomUser
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers(
-                        HttpMethod.GET,
-                        "/",
-                        "/v2/api-docs",           // swagger
-                        "/webjars/**",            // swagger-ui webjars
-                        "/swagger-resources/**",  // swagger-ui resources
-                        "/configuration/**",      // swagger configuration
-                        "/*.html",
-                        "/favicon.ico",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js"
+                .antMatchers(HttpMethod.GET,
+                        "/v2/api-docs",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html**",
+                        "/webjars/**",
+                        "favicon.ico"
                 ).permitAll()
                 .antMatchers("/api/v1/authenticate").permitAll()
                 .anyRequest()

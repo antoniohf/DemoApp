@@ -1,5 +1,6 @@
 package antoniohf.movierating.config
 
+import io.swagger.annotations.Api
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import springfox.documentation.builders.ApiInfoBuilder
@@ -26,9 +27,6 @@ import springfox.documentation.spi.service.contexts.SecurityContext
 @EnableSwagger2
 class SwaggerConfig {
 
-    var AUTHORIZATION_HEADER = "Authorization"
-    var DEFAULT_INCLUDE_PATTERN = "/api/v1/.*";
-
     @Bean
     fun eDesignApi(swaggerConfigProperties: SwaggerConfigProperties): Docket {
         return Docket(DocumentationType.SWAGGER_2)
@@ -37,7 +35,7 @@ class SwaggerConfig {
                 .securityContexts(listOf(securityContext()))
                 .securitySchemes(listOf(apiKey()))
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api::class.java))
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
@@ -77,14 +75,14 @@ class SwaggerConfig {
     }
 
     private fun apiKey(): ApiKey {
-        return ApiKey("JWT", AUTHORIZATION_HEADER, "header")
+        return ApiKey("JWT", "Authorization", "header")
     }
 
     private fun securityContext(): SecurityContext {
         return SecurityContext
                 .builder()
                 .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.regex(DEFAULT_INCLUDE_PATTERN))
+                .forPaths(PathSelectors.regex("/api/v1/movies.*"))
                 .build()
     }
 
