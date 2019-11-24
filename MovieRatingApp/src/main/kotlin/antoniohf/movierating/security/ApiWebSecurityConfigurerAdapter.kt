@@ -26,8 +26,8 @@ class ApiWebSecurityConfigurerAdapter(private val userDetailsService: CustomUser
     }
 
     override fun configure(http: HttpSecurity?) {
-        http!!//.cors()
-                //.and()
+        http!!.cors()
+                .and()
                 .csrf()
                 .disable()
                 .authorizeRequests()

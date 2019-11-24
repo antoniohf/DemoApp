@@ -16,7 +16,7 @@ import java.io.Serializable
 @RestController
 @RequestMapping("/api/v1")
 @Api(tags = ["Authentication API"])
-//@CrossOrigin(origins = ["http://localhost:4200"])
+@CrossOrigin(origins = ["http://localhost:4200"])
 class AuthenticationController(private val authenticationManager: AuthenticationManager,
                                private val userDetailsService: CustomUserDetailsService,
                                private val jwtTokenUtil: JwtTokenUtil) {

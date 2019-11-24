@@ -11,7 +11,7 @@ import java.time.LocalDate
 @RestController
 @RequestMapping("/api/v1/movies")
 @Api(tags = ["Movie rating API"])
-//@CrossOrigin(origins = ["http://localhost:4200"])
+@CrossOrigin(origins = ["http://localhost:4200"])
 class MovieRatingController(private val movieService: MovieService) {
 
     @GetMapping("/")

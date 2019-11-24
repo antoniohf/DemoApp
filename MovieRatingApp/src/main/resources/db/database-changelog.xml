@@ -9,5 +9,6 @@
     <include file="db/v0.1_create_authentication_tables.xml"/>
     <include file="db/v0.2_populate_authentication_table.xml"/>
     <include file="db/v0.3_create_movie_table.xml"/>
+    <include file="db/v0.4_populate_movie_table.xml"/>
 
 </databaseChangeLog>
