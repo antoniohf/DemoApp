@@ -11,6 +11,9 @@ This project is intended to be used as a base for rapid protopyting. It is not p
 # Development server
 
 Run ```gradlew bootrun``` to start springboot. 
+
+Run ```gradlew docker``` to generate docker image
+
 Access http://localhost:8080/swagger-ui.html to test endpoints and authenticate with credentials -> "user:pass"
 
 # Notes
