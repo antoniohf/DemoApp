@@ -11,5 +11,5 @@ class UserService(private val userRepository: UserRepository,
                   private val userMapper: UserMapper) {
 
     fun findByLoginName(loginName: String): UserDto = userMapper.toUserDto(
-            userRepository.findByLoginName(loginName)?: throw UsernameNotFoundException("Username not found!"))
+            userRepository.findByLoginName(loginName).orElseThrow { UsernameNotFoundException("Username not found!") } )
 }

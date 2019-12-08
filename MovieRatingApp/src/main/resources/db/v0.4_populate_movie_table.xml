@@ -17,6 +17,11 @@
             </column>
             <column name="release_date" value="1987-01-17">
             </column>
+            <!-- Audit columns -->
+            <column name="created_by" value="1">
+            </column>
+            <column name="creation_date" value="1900-01-01">
+            </column>
         </insert>
 
     </changeSet>
