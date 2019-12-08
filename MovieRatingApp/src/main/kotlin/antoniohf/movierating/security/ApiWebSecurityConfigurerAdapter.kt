@@ -36,7 +36,8 @@ class ApiWebSecurityConfigurerAdapter(private val userDetailsService: CustomUser
                         "/swagger-resources/**",
                         "/swagger-ui.html**",
                         "/webjars/**",
-                        "favicon.ico"
+                        "favicon.ico",
+                        "/actuator/**"
                 ).permitAll()
                 .antMatchers("/api/v1/authenticate").permitAll()
                 .anyRequest()

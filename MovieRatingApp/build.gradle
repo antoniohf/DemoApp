@@ -83,6 +83,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web:${springbootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-security:${springbootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springbootVersion}")
+	compile("org.springframework.boot:spring-boot-starter-actuator:${springbootVersion}")
 	compile("io.jsonwebtoken:jjwt:${jjwtVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinPluginVersion}")
 	compile("org.slf4j:slf4j-api:${slf4jVersion}")

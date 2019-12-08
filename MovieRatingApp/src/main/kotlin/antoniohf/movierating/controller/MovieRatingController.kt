@@ -23,6 +23,4 @@ class MovieRatingController(private val movieService: MovieService) {
     @PostMapping("/")
     fun addMovie(@RequestBody movieDto: MovieDto): ResponseEntity<*> = ResponseEntity.ok<Any>(movieService.addMovie(movieDto)) //TODO: this might need to change
 
-    @GetMapping("/status")
-    fun getStatus(): ResponseEntity<*> = ResponseEntity.ok<Any>(StatusInfo("Movie Rating App running on Docker", "alpha v0.0.1"))
 }

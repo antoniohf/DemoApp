@@ -10,13 +10,11 @@ spring:
 ribbon:
   ServerListRefreshInterval: 1000
 
-endpoints:
-  health:
-    sensitive: false
-  restart:
-    enabled: true
-  shutdown:
-    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 jwt:
   secret: "secret_key"
